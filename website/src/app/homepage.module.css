@@ -1,0 +1,94 @@
+.container {
+  scroll-timeline: --homepage-scroll y;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.image {
+  animation-name: renderImage;
+  animation-duration: 1ms;
+  animation-timeline: --homepage-scroll;
+}
+
+.logo {
+  position: fixed;
+  left: 0;
+  top: 2rem;
+  animation-name: logoFlag;
+  animation-duration: 1ms;
+  animation-timeline: --homepage-scroll;
+}
+
+.textBody {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  max-width: 30rem;
+}
+
+.textBody a {
+  color: lightblue;
+}
+
+.getStartedButton {
+  display: flex;
+  margin: 2rem;
+  background: linear-gradient(
+    90deg,
+    rgba(13, 0, 223, 1) 0%,
+    rgba(29, 55, 185, 1) 29%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgb(0, 0, 0, 40%);
+  font-family: var(--font-poppins);
+}
+.getStartedButton:hover {
+  box-shadow: 0.4rem 0.4rem 0.5rem rgb(0, 0, 0, 40%);
+  transform: scale(1.05);
+  transition-duration: 0.1s;
+}
+
+.subject {
+  view-timeline-name: --subjectReveal;
+  animation-timeline: --subjectReveal;
+  animation-name: appear;
+  animation-fill-mode: both;
+  animation-duration: 1ms;
+}
+
+@keyframes renderImage {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes logoFlag {
+  0% {
+    transform: translate(-100%, 0);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  8% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}

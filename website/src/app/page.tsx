@@ -1,101 +1,81 @@
+/**
+ * homepage!
+ */
+import styles from "@/app/homepage.module.css";
 import Image from "next/image";
+import UnsupportedBrowserBanner from "./firefoxbanner";
+import Footer from "./footer";
+import GetStartedButton from "./fancybutton";
 
-export default function Home() {
+export default function Homepage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className={styles.container}>
+      <Image
+        alt="logo"
+        src={"/flag-orpheus-left.svg"}
+        width={100}
+        height={100}
+        className={styles.logo}
+      />
+      <div className="w-full h-[40rem] bg-gray-900 flex items-center justify-center flex-col">
+        <h2 className="font-sans text-3xl mt-10">Introducing Orpheus Pico</h2>
+        <div className="w-full grow flex items-center justify-center">
+          <Image
+            alt="orpheus pico!"
+            src={"/transparent-orpheus.png"}
+            height={400}
+            width={400}
+            className={`${styles.image} h-3/4`}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="w-full px-5 mb-5 flex items-center align-center flex-col">
+          <h3 className="font-sans text-2xl">
+            The world's hackiest open-source microcontroller!*
+          </h3>
+          <h4 className="font-sans text-xs">
+            *Hackiness is subjective. No hackiability guaranteed unless required
+            by court of law.
+          </h4>
+        </div>
+      </div>
+
+      <UnsupportedBrowserBanner />
+      <div className="w-full bg-gray-800 px-8 py-5 flex-col flex items-center">
+        <GetStartedButton href="" />
+        <div className={styles.textBody}>
+          <h3 className="text-xl">One day at Hack Club HQ, I had an idea. </h3>
+          <p className="mt-4">
+            While assembling some{" "}
+            <a href="https://sprig.hackclub.com">Sprigs</a>, I realized a major
+            problem with the Pi Pico Ws we used - they're just really expensive.
+            So why settle?
+          </p>
+          <p className="mt-4">
+            And from this the Orpheus Pico was born, designed to be a drop-in
+            open-source replacement to the Pi Pico with a ton of new features
+            and some stylish Hack Club branding.
+          </p>
+
+          <p className="mt-4">
+            You can check out the features list if you want, but the tl;dr is:
+          </p>
+          <ul className="list-disc list-inside">
+            <li className={styles.subject}>More storage!</li>
+            <li className={styles.subject}>USB Type-C!</li>
+            <li className={styles.subject}>Onboard RGBLED!</li>
+            <li className={styles.subject}>Gorgeous artwork!</li>
+            <li className={styles.subject}>And MORE!</li>
+          </ul>
+          <p className="mt-4">
+            I've had a lot of fun making it the way I wanted it to be, but now I
+            want you to do the same. So go make something!
+          </p>
+          <p className="m-4">
+            - With ❤️ from <a href="https://adammakesthings.dev">Adam</a>
+          </p>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }
