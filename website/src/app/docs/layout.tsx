@@ -14,7 +14,9 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
             <div className="flex grow overflow-hidden">
                 <Sidebar />
                 {/* Rendered MDX */}
-                <div className="px-10 py-5 overflow-y-auto grow max-w-4xl flex flex-col">{children}</div>
+                <div className="px-10 py-5 overflow-y-auto grow">
+                    <div className="max-w-3xl flex flex-col">{children}</div>
+                </div>
             </div>
         </div>
     );
