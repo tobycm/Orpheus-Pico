@@ -10,7 +10,9 @@ import { getCookie, setCookie } from "cookies-next";
 import { useState } from "react";
 
 export default function VersionSwitcher() {
-    const [version, setVersion] = useState<VersionMetadata>(getVersion());
+    const [version, setVersion] = useState<VersionMetadata | undefined>(
+        getVersion()
+    );
     return (
         <div>
             <Select
@@ -20,7 +22,7 @@ export default function VersionSwitcher() {
                     setVersion(saveVersion(v));
                     console.log(`Board version set to ${v}`);
                 }}
-                defaultSelectedKeys={[version.version]}
+                defaultSelectedKeys={version ? [version.version] : undefined}
             >
                 {boardVersions.map((version) => (
                     <SelectItem key={version.version}>
@@ -43,7 +45,7 @@ export function getVersion() {
     );
     if (!version) {
         setCookie("board-version", boardVersions[0].version);
-        return getVersion();
+        return undefined;
     }
 
     console.log(`Detected stored board version as ${version.version}`);
