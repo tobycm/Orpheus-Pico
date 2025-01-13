@@ -1,9 +1,0 @@
-{
-  "name": "website",
-  "version": "1.0.0",
-  "description": "Website and design files for Orpheus Pico",
-  "main": "index.js",
-  "repository": "https://github.com/adammakesthingsdev/Orpheus-Pico.git",
-  "author": "adammakesthingsdev <adam@adammakesthings.dev>",
-  "license": "MIT"
-}
