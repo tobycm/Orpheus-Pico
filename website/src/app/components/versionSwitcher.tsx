@@ -7,12 +7,16 @@
 import { boardVersions, VersionMetadata } from "@/metadata";
 import { Select, SelectItem } from "@nextui-org/select";
 import { getCookie, setCookie } from "cookies-next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function VersionSwitcher() {
     const [version, setVersion] = useState<VersionMetadata | undefined>(
-        getVersion()
+        undefined
     );
+    useEffect(() => {
+        setVersion(getVersion());
+        console.log("got version!");
+    }, []);
     return (
         <div>
             <Select
@@ -22,7 +26,7 @@ export default function VersionSwitcher() {
                     setVersion(saveVersion(v));
                     console.log(`Board version set to ${v}`);
                 }}
-                defaultSelectedKeys={version ? [version.version] : undefined}
+                selectedKeys={version ? [version.version] : undefined}
             >
                 {boardVersions.map((version) => (
                     <SelectItem key={version.version}>

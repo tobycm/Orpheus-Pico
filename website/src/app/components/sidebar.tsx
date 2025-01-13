@@ -20,16 +20,16 @@ export default function Sidebar() {
             >
                 <AccordionItem title="About Orpheus Pico">
                     <div className="flex flex-col gap-1 px-2">
-                        <SidebarLink link="about" label="About" />
-                        <SidebarLink link="features" label="Features" />
-                        <SidebarLink link="pinout" label="Pinout" />
+                        <SidebarLink link="/docs/about" label="About" />
+                        <SidebarLink link="/docs/features" label="Features" />
+                        <SidebarLink link="/docs/pinout" label="Pinout" />
                     </div>
                 </AccordionItem>
 
                 <AccordionItem title="Learn">
                     <div className="flex flex-col gap-1 px-2">
                         <SidebarLink
-                            link="getting-started"
+                            link="/docs/getting-started"
                             label="Getting started"
                         />
                     </div>
