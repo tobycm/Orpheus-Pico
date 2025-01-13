@@ -17,7 +17,7 @@ export default function Homepage() {
                 height={100}
                 className={styles.logo}
             />
-            <div className="w-full h-[40rem] bg-gray-900 flex items-center justify-center flex-col">
+            <div className="w-full h-[40rem] bg-content2 flex items-center justify-center flex-col">
                 <h2 className="font-sans text-3xl mt-10">
                     Introducing Orpheus Pico
                 </h2>
@@ -42,7 +42,7 @@ export default function Homepage() {
             </div>
 
             <UnsupportedBrowserBanner />
-            <div className="w-full bg-gray-800 px-8 py-5 flex-col flex items-center">
+            <div className="w-full bg-content3 px-8 py-5 flex-col flex items-center">
                 <GetStartedButton href="/docs" />
                 <div className={styles.textBody}>
                     <h3 className="text-xl">
