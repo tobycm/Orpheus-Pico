@@ -4,11 +4,52 @@
 
 "use client";
 
-import { boardVersions, VersionMetadata } from "@/metadata";
+import { boardVersions } from "@/metadata";
 import { Select, SelectItem } from "@nextui-org/select";
-import { getCookie, setCookie } from "cookies-next";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
+export default function VersionSwitcher({ path }: { path: string[] }) {
+    const extracted = extractPathVersion(path);
+    const version = extracted.version;
+    console.log(extracted);
+
+    const router = useRouter();
+
+    function switchPage(value: string) {
+        // TODO - validate page to switch to
+        //const newVersion = boardVersions.find((version) => value == version.id);
+        const url = `/docs/${value}/${extracted.extraPath}`;
+        router.push(url);
+    }
+
+    return (
+        <div>
+            <Select
+                label="Select board"
+                onChange={(event) => {
+                    switchPage(event.target.value);
+                }}
+                selectedKeys={[version?.id ?? "pico"]}
+            >
+                {boardVersions.map((version) => (
+                    <SelectItem key={version.id}>{version.name}</SelectItem>
+                ))}
+            </Select>
+        </div>
+    );
+}
+
+export function extractPathVersion(path: string[]) {
+    const version = boardVersions.find((version) => version.id == path[0]);
+    const excessURL = !version ? path.join("/") : path.slice(1).join("/");
+
+    return {
+        version,
+        extraPath: excessURL,
+    };
+}
+
+/*
 export default function VersionSwitcher() {
     const [version, setVersion] = useState<VersionMetadata | undefined>(
         undefined
@@ -38,10 +79,6 @@ export default function VersionSwitcher() {
     );
 }
 
-/**
- * Get currently selected version from cookies.
- * @returns Board version metadata object
- */
 export function getVersion() {
     const versionKey = getCookie("board-version")?.toString();
     const version = boardVersions.find(
@@ -65,3 +102,4 @@ export function saveVersion(val: string) {
     setCookie("board-version", version.version);
     return version;
 }
+*/

@@ -1,0 +1,77 @@
+export const title = "USB 2-Factor Authentication Passkey";
+export const difficulty = "Beginner";
+export const author = "Adam G.";
+
+This guide will teach you how to use your Orpheus Pico as a 2-factor
+authentication passkey like a Yubikey. This is a great first project as it
+doesn't require anything other than the Orpheus Pico itself!
+
+## Introduction
+
+Ever seen one of those fancy-shmancy Yubikeys and wanted one? Well, in this
+guide, I'll explain how you can make your very own device for 2-factor
+authentications and passkeys using nothing but your Orpheus Pico and some
+open-source code :D
+
+## Required materials
+
+-   Orpheus Pico
+-   USB-C cable
+-   A chrome-based web browser (or any browser supporting WebSerial)
+
+## Instructions
+
+### Download the firmware
+
+Download the latest version of the Pico Fido software from the GitHub Releases
+page [here](https://github.com/polhenarejos/pico-fido/releases/latest).  
+Unzip it, find `pico_fido_pico-<VERSION>.uf2`, and rename it to `firmware.uf2`.
+Save it somewhere you'll remember!
+
+### Install to your Orpheus Pico
+
+Plug your Orpheus Pico into your Type-C cable, and plug the other end into your
+computer. While holding down the "BOOT" button, quickly press the "RESET"
+button. If you've done this correctly, a new USB drive should appear on your
+computer called `RPI-RP2`. Now, simply drag-and-drop (or copy) the
+`firmware.uf2` file from before to the newly-created drive. It may take a second
+but once it's done transferring the disk drive should disappear.
+
+### Prep your Pico Key
+
+In order to use your newly-flashed authentication key, you'll need to
+"commission" it first. This sets all of the customizable features that we'll
+need to change.  
+Visit the [Pico Commissioner tool](https://www.picokeys.com/pico-commissioner/)
+and scroll down to the configuration section. The vendor and product IDs
+("VID"/"PID") are a part of the USB specification and allow the computer to
+determine who the manufacturer of a USB device is, and which product it is. This
+can matter if you want to use a software designed for a specific key. If you're
+not sure, a safe bet is "YubiKey 4/5".  
+The presence button timeout and LED brightness are up to you, but it's safe to
+keep them at the default if you want to.  
+For the options on the side, go with "LED dimmable" and "Power Cycle on Reset".
+You can learn more about the other values on the Pico Fido GitHub, but they're
+out of the scope of this tutorial. The product name's up to you, you can leave
+this as "Pico Key" or set it as you want. This is what will show up in your
+operating system. I went with "Orphenticator" :)
+![Configurator](/guides/passkey/commissioner.png) _Basic configuration_  
+Lastly and most importantly is the LED GPIO pin field. This matters to us
+because while the Raspberry Pi Pico (what the firmware is built for) has its
+built-in LED on GPIO25, the Orph Pico's is on GPIO23.
+
+### Last steps
+
+Now that all of the settings are configured, go ahead and press "Commission via
+WebAuthn". If all goes well, you should see a popup from your operating system
+asking you to set up your key.  
+You'll be asked to set a PIN - **make sure you don't forget it!**  
+Lastly, it'll prompt you to "touch your key". As we've set it up, this means
+press the BOOT button on your Orpheus Pico.
+
+## Usage
+
+That's it! Your Orpheus Pico-based authenticator device is now ready to use just
+the same as you would a Yubikey.  
+If you want to play around, you can give it a whirl at
+[Yubico's passkey playground.](https://demo.yubico.com/playground)

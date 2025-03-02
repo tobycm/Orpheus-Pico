@@ -11,13 +11,7 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
             {/* Navbar */}
             <DocsHeader />
             {/* Main content */}
-            <div className="flex grow overflow-hidden">
-                <Sidebar />
-                {/* Rendered MDX */}
-                <div className="px-10 py-5 overflow-y-auto grow">
-                    <div className="max-w-3xl flex flex-col">{children}</div>
-                </div>
-            </div>
+            <div className="flex grow overflow-hidden">{children}</div>
         </div>
     );
 }
