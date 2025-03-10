@@ -43,7 +43,7 @@ export default function Homepage() {
 
             <UnsupportedBrowserBanner />
             <div className="w-full bg-content3 px-8 py-5 flex-col flex items-center">
-                <GetStartedButton href="/docs" />
+                <GetStartedButton href="/docs/pico/getting-started" />
                 <div className={styles.textBody}>
                     <h3 className="text-xl">
                         One day at Hack Club HQ, I had an idea.{" "}
