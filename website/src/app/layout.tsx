@@ -5,7 +5,6 @@ import { Providers } from "./providers";
 export const metadata: Metadata = {
     title: "Orpheus Pico",
     description: "The world's hackiest open-source microcontroller!",
-    
 };
 
 export default function RootLayout({
