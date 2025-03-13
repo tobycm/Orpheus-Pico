@@ -19,12 +19,12 @@ export default function UnsupportedBrowserBanner() {
     }, []);
 
     return isOpen ? (
-        <div className="bottom-0 fixed w-screen bg-yellow-500 flex items-center justify-center p-4">
+        <div className="fixed bottom-[12px] left-1/2 transform -translate-x-1/2 bg-yellow-500 flex items-center justify-center p-4 rounded-lg shadow-md">
             <span className="font-sans">
                 The browser you&apos;re using may not show animations properly!
             </span>
             <span
-                className="font-mono text-xl items-center flex h-full ml-4"
+                className="font-mono text-xl items-center flex h-full ml-4 cursor-pointer"
                 onClick={() => {
                     setOpen(false);
                     setCookie("browserAccept", "true");
